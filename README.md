@@ -10,7 +10,6 @@
 | **Language**     | TypeScript, React                                            |
 | **Build Tool**   | Vite                                                         |
 | **3D & Map**     | Deck.gl, React-map-gl, Maplibre-gl, Leaflet, Cesium (Resium) |
-| **Styling**      | CSS Modules / Styled-components (프로젝트 설정에 따름)       |
 | **Architecture** | **FBA (Feature-Based Architecture)**                         |
 
 **3D & Map** 관련 라이브러리는 아래와 같이 설치된 상태입니다. 필요하다면 라이브러리를 추가하여 사용하세요.
