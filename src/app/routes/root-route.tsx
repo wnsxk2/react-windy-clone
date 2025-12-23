@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router';
 
-const Home = lazy(() => import('../pages/index'));
-const JT = lazy(() => import('../pages/jt'));
-const HJ = lazy(() => import('../pages/hj'));
+const Home = lazy(() => import('@/app/pages/index'));
+const JT = lazy(() => import('@/app/pages/jt'));
+const HJ = lazy(() => import('@/app/pages/hj'));
 
 export default function RootRoute() {
   return (
