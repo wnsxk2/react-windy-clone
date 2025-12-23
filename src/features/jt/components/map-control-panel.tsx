@@ -1,0 +1,36 @@
+import type { ViewState } from 'react-map-gl/maplibre';
+
+import type { Projection } from '../types';
+import { DebugPanel } from './debug-panel';
+import { ProjectionControls } from './projection-controls';
+
+interface MapControlPanelProps {
+  viewState: ViewState;
+  onProjectionChange: (projection: Projection) => void;
+}
+
+export function MapControlPanel({
+  viewState,
+  onProjectionChange,
+}: MapControlPanelProps) {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        minWidth: 100,
+        top: 10,
+        right: 10,
+        zIndex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 12,
+        padding: 8,
+        borderRadius: 8,
+        backgroundColor: '#faf9f5',
+      }}
+    >
+      <ProjectionControls onProjectionChange={onProjectionChange} />
+      <DebugPanel viewState={viewState} />
+    </div>
+  );
+}
