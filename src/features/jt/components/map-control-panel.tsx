@@ -1,17 +1,22 @@
 import type { ViewState } from 'react-map-gl/maplibre';
 
-import type { Projection } from '../types';
+import type { LayerVisibility, Projection, VectorLayerType } from '../types';
 import { DebugPanel } from './debug-panel';
+import { LayerControls } from './layer-controls';
 import { ProjectionControls } from './projection-controls';
 
 interface MapControlPanelProps {
   viewState: ViewState;
   onProjectionChange: (projection: Projection) => void;
+  layerVisibility: LayerVisibility;
+  onLayerToggle: (layerType: VectorLayerType) => void;
 }
 
 export function MapControlPanel({
   viewState,
   onProjectionChange,
+  layerVisibility,
+  onLayerToggle,
 }: MapControlPanelProps) {
   return (
     <div
@@ -30,6 +35,7 @@ export function MapControlPanel({
       }}
     >
       <ProjectionControls onProjectionChange={onProjectionChange} />
+      <LayerControls visibility={layerVisibility} onToggle={onLayerToggle} />
       <DebugPanel viewState={viewState} />
     </div>
   );

@@ -4,13 +4,15 @@ import {
   MAP_STYLE_URL,
   MapControlPanel,
   MIN_ZOOM,
+  useLayerVisibility,
   useMapState,
+  VectorLayers,
 } from '@/features/jt';
 
-// Page Component
 export default function Page() {
   const { projection, viewState, handleProjectionChange, handleMove } =
     useMapState();
+  const { visibility, toggleLayer } = useLayerVisibility();
 
   return (
     <div
@@ -28,6 +30,8 @@ export default function Page() {
       <MapControlPanel
         viewState={viewState}
         onProjectionChange={handleProjectionChange}
+        layerVisibility={visibility}
+        onLayerToggle={toggleLayer}
       />
       <Map
         initialViewState={viewState}
@@ -36,7 +40,9 @@ export default function Page() {
         minZoom={MIN_ZOOM}
         mapStyle={MAP_STYLE_URL}
         style={{ width: '100vw', height: '100vh' }}
-      />
+      >
+        <VectorLayers visibility={visibility} />
+      </Map>
     </div>
   );
 }
