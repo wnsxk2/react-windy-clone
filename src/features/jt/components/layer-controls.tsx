@@ -10,6 +10,7 @@ const LAYER_CONFIG: { type: VectorLayerType; label: string; color: string }[] = 
   { type: 'line', label: 'Line', color: '#3b82f6' },
   { type: 'polygon', label: 'Polygon', color: '#22c55e' },
   { type: 'multi-polygon', label: 'MultiPolygon', color: '#9333ea' },
+  { type: 'heatmap', label: 'Heatmap', color: '#f97316' },
 ];
 
 export function LayerControls({ visibility, onToggle }: LayerControlsProps) {

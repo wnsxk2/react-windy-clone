@@ -2,7 +2,7 @@ import type { FeatureCollection, Geometry } from 'geojson';
 
 export type Projection = 'mercator' | 'globe';
 
-export type VectorLayerType = 'point' | 'line' | 'polygon' | 'multi-polygon';
+export type VectorLayerType = 'point' | 'line' | 'polygon' | 'multi-polygon' | 'heatmap';
 
 export interface VectorLayerConfig {
   id: string;
@@ -18,4 +18,5 @@ export interface LayerVisibility {
   line: boolean;
   polygon: boolean;
   'multi-polygon': boolean;
+  heatmap: boolean;
 }

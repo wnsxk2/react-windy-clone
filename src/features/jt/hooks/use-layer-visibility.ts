@@ -7,6 +7,7 @@ const INITIAL_VISIBILITY: LayerVisibility = {
   line: true,
   polygon: true,
   'multi-polygon': true,
+  heatmap: true,
 };
 
 export function useLayerVisibility() {

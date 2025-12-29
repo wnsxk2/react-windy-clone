@@ -1,5 +1,6 @@
 import { Layer, Source } from 'react-map-gl/maplibre';
 
+import { INTERPOLATED_HEATMAP_DATA } from '../data/interpolated-heatmap';
 import {
   LINE_DATA,
   MULTI_POLYGON_DATA,
@@ -15,6 +16,53 @@ interface VectorLayersProps {
 export function VectorLayers({ visibility }: VectorLayersProps) {
   return (
     <>
+      {visibility.heatmap && (
+        <Source
+          id="interpolated-heatmap-source"
+          type="geojson"
+          data={INTERPOLATED_HEATMAP_DATA}
+        >
+          <Layer
+            id="interpolated-heatmap-layer"
+            type="circle"
+            paint={{
+              'circle-radius': [
+                'interpolate',
+                ['exponential', 2],
+                ['zoom'],
+                0,
+                ['*', ['get', 'weight'], 150],
+                5,
+                ['*', ['get', 'weight'], 80],
+                10,
+                ['*', ['get', 'weight'], 40],
+                15,
+                ['*', ['get', 'weight'], 20],
+              ],
+              'circle-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'weight'],
+                0,
+                'rgba(33, 102, 172, 0)',
+                0.2,
+                'rgb(103, 169, 207)',
+                0.4,
+                'rgb(209, 229, 240)',
+                0.6,
+                'rgb(253, 219, 199)',
+                0.8,
+                'rgb(239, 138, 98)',
+                1,
+                'rgb(178, 24, 43)',
+              ],
+              'circle-blur': 1,
+              'circle-opacity': 0.65,
+            }}
+          />
+        </Source>
+      )}
+
       {visibility['multi-polygon'] && (
         <Source id="multi-polygon-source" type="geojson" data={MULTI_POLYGON_DATA}>
           <Layer
